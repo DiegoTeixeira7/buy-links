@@ -1,0 +1,136 @@
+.field {
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  input, select, textarea, label.upload::after {
+      border: var(--border);
+      border-radius: 0.25rem;
+      padding: 0.75rem;
+      color: var(--gray-dark);
+      font-weight: 400;
+      ::placeholder {
+          color: var(--gray);
+      }
+  }
+  label {
+      color: var(--gray);
+      justify-content: space-between;
+      &.upload {
+          flex-direction: column;
+          gap: 0.5rem;
+          cursor: pointer;
+          &::after {
+              content: attr(data-value);
+              background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>');
+              background-repeat: no-repeat;
+              background-position: right 0.75rem top 50%;
+              background-size: 1rem auto;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              padding-right: 3rem;
+              width: 100%;
+              max-width: calc(100% - 4rem);
+              position: absolute;
+              top: 1.5rem;
+          }
+      }
+  }
+  select {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.75rem top 50%;
+      background-size: 1rem auto;
+  }
+  textarea {
+      resize: none;
+  }
+  input[type=color] {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 1rem;
+      padding: 0;
+      border: 0;
+      width: 1.5rem;
+      height: 1.6rem;
+      cursor: pointer;
+  }
+  input[type=file] {
+      display: none;
+  }
+
+  .upload-area {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 12.125rem;
+      padding: 0.75rem 0.75rem;
+      border-radius: var(--radius-small);
+      border: var(--border);
+      cursor: pointer;
+
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 140%;
+      color: var(--gray);
+
+      span:first-of-type {
+          font-size: 1rem;
+          color: var(--gray-dark);
+      }
+
+      img {
+          margin-bottom: 0.6rem;
+      }
+
+      input {
+          display: none;
+      }
+  }
+
+  .upload-field {
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.75rem 0.75rem;
+      border-radius: var(--radius-small);
+      border: var(--border);
+      cursor: pointer;
+
+      color: var(--gray);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 100%;
+
+      input {
+          display: none;
+      }
+
+      img {
+          width: 1rem;
+          height: 1rem;
+      }
+  }
+
+  .no-editable {
+      width: 100%;
+      padding: 0.75rem 0.75rem;
+      border-radius: var(--radius-small);
+      border: var(--border);
+
+      color: var(--gray-dark);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 100%;
+  }
+}
+
+.error {
+  input, select, textarea, label.upload::after {
+      border-color: var(--red);
+  }
+
+  div {
+      border-color: var(--red) !important;
+  }
+}
