@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  main:
+    container_name: nextjs
+    build: .
+    image: default-next:latest
+    restart: unless-stopped
+    env_file: .env.local
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+    # ports:
+    #   - '3000:3000'
+    network_mode: host
+    command: sh -c "yarn && yarn dev"

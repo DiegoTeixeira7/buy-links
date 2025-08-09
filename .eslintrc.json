@@ -1,0 +1,27 @@
+{
+  "extends": ["next/core-web-vitals", "@doois/eslint-config/next"],
+  "rules": {
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ]
+      }
+    ],
+    "no-console": ["error", { "allow": ["warn", "error"] }]
+  }
+}
