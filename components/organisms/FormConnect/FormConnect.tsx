@@ -9,16 +9,19 @@ import * as Yup from 'yup'
 import { notify } from '@/utils/notification'
 import { FormConnectSchema } from '@/interfaces/Input'
 import { Field } from '@/components/atoms/Field'
+import { addLink } from '@/lib/web3/Web3Service'
+import { linkToShortHash } from '@/utils/hash'
 
 const MainDataSchema = Yup.object().shape({
-  link: Yup.string().url('Url inválido').required('Campo Obrigatório'),
-  fee: Yup.number().required('Campo Obrigatório'),
+  link: Yup.string().optional(),
+  fee: Yup.number().optional(),
 })
 
 const FormConnect: React.FC = () => {
   const onSubmit = async (values: FormConnectSchema) => {
     try {
-      //
+      const linkId = linkToShortHash(values.link)
+      const data = await addLink(values.link, linkId, values.fee as number)
     } catch (e) {
       notify('Preencha as informações corretamente', 'error')
     }
@@ -27,7 +30,7 @@ const FormConnect: React.FC = () => {
   const formik = useFormik<FormConnectSchema>({
     initialValues: {
       link: '',
-      fee: undefined,
+      fee: 0,
     },
     validationSchema: MainDataSchema,
     onSubmit,
